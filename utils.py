@@ -13,37 +13,34 @@ def get_header(app):
                 [
                     html.A(
                         html.Img(
-                            src=app.get_asset_url("dash-financial-logo.png"),
+                            src=app.get_asset_url("sia-logo.png"),
                             className="logo",
                         ),
-                        href="https://plotly.com/dash",
+                        href="https://www.sia-partners.com/en",
                     ),
                     html.A(
                         html.Button(
-                            "Enterprise Demo",
+                            "Source Data",
                             id="learn-more-button",
                             style={"margin-left": "-10px"},
                         ),
-                        href="https://plotly.com/get-demo/",
+                        href="https://www.ia.org.hk/en/infocenter/statistics/market.html",
                     ),
-                    html.A(
-                        html.Button("Source Code", id="learn-more-button"),
-                        href="https://github.com/plotly/dash-sample-apps/tree/main/apps/dash-financial-report",
-                    ),
+
                 ],
                 className="row",
             ),
             html.Div(
                 [
                     html.Div(
-                        [html.H5("Calibre Financial Index Fund Investor Shares")],
+                        [html.H5("Hong Kong Insurance Authority Dashboard")],
                         className="seven columns main-title",
                     ),
                     html.Div(
                         [
                             dcc.Link(
                                 "Full View",
-                                href="/dash-financial-report/full-view",
+                                href="/insurance-authority-report/full-view",
                                 className="full-view-link",
                             )
                         ],
@@ -64,32 +61,23 @@ def get_menu():
         [
             dcc.Link(
                 "Overview",
-                href="/dash-financial-report/overview",
+                href="/insurance-authority-report/overview",
                 className="tab first",
             ),
             dcc.Link(
-                "Price Performance",
-                href="/dash-financial-report/price-performance",
+                "General Business",
+                href="/insurance-authority-report/general-business",
                 className="tab",
             ),
             dcc.Link(
-                "Portfolio & Management",
-                href="/dash-financial-report/portfolio-management",
+                "Long Term Business",
+                href="/insurance-authority-report/long-term-business",
                 className="tab",
             ),
             dcc.Link(
-                "Fees & Minimums", href="/dash-financial-report/fees", className="tab"
+                "About", href="https://www.sia-partners.com/en/about-us/who-we-are", className="tab", target="_blank"
             ),
-            dcc.Link(
-                "Distributions",
-                href="/dash-financial-report/distributions",
-                className="tab",
-            ),
-            dcc.Link(
-                "News & Reviews",
-                href="/dash-financial-report/news-and-reviews",
-                className="tab",
-            ),
+
         ],
         className="row all-tabs",
     )
@@ -99,9 +87,16 @@ def get_menu():
 def make_dash_table(df):
     """ Return a dash definition of an HTML table for a Pandas dataframe """
     table = []
+    html_column = []
+    for name in df.columns:
+        html_column.append(html.Th(name))
+    table.append(html.Tr(html_column))
     for index, row in df.iterrows():
+  
         html_row = []
         for i in range(len(row)):
             html_row.append(html.Td([row[i]]))
         table.append(html.Tr(html_row))
     return table
+
+
