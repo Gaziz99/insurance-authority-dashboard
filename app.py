@@ -41,8 +41,8 @@ server = app.server
 
 # Describe the layout/ UI of the app
 app.layout = html.Div(
-    [dcc.Location(id="url", refresh=False), html.Div(id="page-content"),html.Div(id="insurer-type"), dcc.Dropdown(id="insurer-type-dropdown"), html.Div(id="direct-business"), dcc.Dropdown(id="direct-business-dropdown"),
-     html.Div(id="reinsurance-business"),dcc.Dropdown(id="reinsurance-business-dropdown"), dcc.Graph(id="graph-4"),dcc.Dropdown(id="class-business-dropdown")]
+    [dcc.Location(id="url", refresh=False), html.Div(id="page-content"), html.Div(id="insurer-type", style= {'display': 'none'}), dcc.Dropdown(id="insurer-type-dropdown", style= {'display': 'none'}), html.Div(id="direct-business", style= {'display': 'none'}), dcc.Dropdown(id="direct-business-dropdown", style= {'display': 'none'}),
+     html.Div(id="reinsurance-business", style= {'display': 'none'}),dcc.Dropdown(id="reinsurance-business-dropdown", style= {'display': 'none'}), dcc.Graph(id="graph-4", style= {'display': 'none'}),dcc.Dropdown(id="class-business-dropdown", style= {'display': 'none'})]
 )
 
 
